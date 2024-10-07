@@ -13,11 +13,11 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($epreves as $a)
+        @foreach($epreuves as $epreuve)
             <tr>
-                <td>{{ $a['Numéro'] }}</td>
-                <td>{{ $a['Date'] }}</td>
-                <td>{{ $a['Lieu'] }}</td>
+                <td>{{ $epreuve->numepreuve }}</td>
+                <td>{{ $epreuve->datepreuve }}</td>
+                <td>{{ $epreuve->lieu }}</td>
             </tr>
             @endforeach
         </tbody>

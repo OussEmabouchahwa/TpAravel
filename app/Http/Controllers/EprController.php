@@ -2,18 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Epreuve; // Import the Epreuve model
 use Illuminate\Http\Request;
 
 class EprController extends Controller
-
 {
     public function index()
     {
-        $epreves = [
-            ['Numéro' => '1001 ', 'Date' => '23/09/2019', 'Lieu' => 110       ],
-            ['Numéro' => '1002 ', 'Date' => '24/09/2019', 'Lieu' => 119       ],
-        ];
+        $epreuves = Epreuve::all(); // Retrieve all 'epreuves' from the database
+        return view('affeprev', compact('epreuves')); // Pass 'epreuves' to the view
+    }
+    public function store(Request $request)
+    {
+        $request->validate([
+            'datepreuve' => 'required|date',
+            'lieu' => 'required|string',
+        ]);
 
-        return view('affeprev', compact('epreves'));
+        Epreuve::create([
+            'datepreuve' => $request->datepreuve,
+            'lieu' => $request->lieu,
+        ]);
+
+        return redirect()->route('epreuves.index');
     }
 }
