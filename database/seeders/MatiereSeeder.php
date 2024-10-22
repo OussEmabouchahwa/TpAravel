@@ -13,3 +13,4 @@ class MatiereSeeder extends Seeder
         Matiere::factory()->count(10)->create(); 
     }
 }
+

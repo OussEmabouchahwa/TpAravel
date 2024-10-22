@@ -12,18 +12,31 @@ class EprController extends Controller
         $epreuves = Epreuve::all(); // Retrieve all 'epreuves' from the database
         return view('affeprev', compact('epreuves')); // Pass 'epreuves' to the view
     }
-    public function store(Request $request)
-    {
-        $request->validate([
-            'datepreuve' => 'required|date',
-            'lieu' => 'required|string',
-        ]);
+       // Méthode pour afficher le formulaire de création d'une épreuve
+       public function create()
+       {
+           return view('layouts.createEpreuve'); 
+       }
+   
+       public function store(Request $request)
+       {
+           $request->validate([
+               'numepreuve' => 'required|numeric',
+               'datepreuve' => 'required|date',
+               'lieu' => 'required|string|max:255',
+           ]);
+       
+           // Create a new Epreuve instance
+           $epreuve = new Epreuve();
+           $epreuve->numepreuve = $request->numepreuve;
+           $epreuve->datepreuve = $request->datepreuve;
+           $epreuve->lieu = $request->lieu;
+           
+           // Save the instance to the database
+           $epreuve->save();
+       
+           return redirect()->route('epreuve.index')->with('success', 'Épreuve ajoutée avec succès.');
+       }
+       
 
-        Epreuve::create([
-            'datepreuve' => $request->datepreuve,
-            'lieu' => $request->lieu,
-        ]);
-
-        return redirect()->route('epreuves.index');
-    }
 }
