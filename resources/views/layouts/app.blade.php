@@ -22,7 +22,7 @@
                         <a class="nav-link" href="/matiere">Matières</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/epreuve">l'éprive</a>
+                        <a class="nav-link" href="/epreuve">l'Epreuve</a>
                     </li>
                 </ul>
             </div>
