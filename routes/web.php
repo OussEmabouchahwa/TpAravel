@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MatController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\MatiereController;
+use App\Http\Controllers\EpreveController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,9 +28,10 @@ use App\Http\Controllers\MatiereController;
 //Route::post('/matiere', [MatController::class, 'store'])->name('matieres.store');
 
 // Routes pour les épreuves
-Route::get('/epreuve', [EprController::class, 'index'])->name('epreuve.index');
-Route::get('/epreuve/create', [EprController::class, 'create'])->name('epreuve.create');
-Route::post('/epreuve', [EprController::class, 'store'])->name('epreuve.store');
+//Route::get('/epreuve', [EprController::class, 'index'])->name('epreuve.index');
+//Route::get('/epreuve/create', [EprController::class, 'create'])->name('epreuve.create');
+//Route::post('/epreuve', [EprController::class, 'store'])->name('epreuve.store');
+Route::resource('epreuve', EpreveController::class);
 
 // Route de la page d'accueil
 Route::get('/', function () {
